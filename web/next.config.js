@@ -8,7 +8,8 @@ const nextConfig = {
     // In production, something else (nginx in the one box setup) should take
     // care of this rewrite. TODO (chris): better support setups where
     // web_server and api_server are on different machines.
-    if (process.env.NODE_ENV === "production") return [];
+    // commenting out this check because we want to keep the proxy in production as well
+    // if (process.env.NODE_ENV === "production") return [];
 
     return [
       {
