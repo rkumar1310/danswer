@@ -13,7 +13,8 @@ const nextConfig = {
     return [
       {
         source: "/api/:path*",
-        destination: "http://127.0.0.1:8080/:path*", // Proxy to Backend
+        destination:
+          (process.env.BACKEND_API_URL || "http://127.0.0.1:8080") + "/:path*", // Proxy to Backend
       },
     ];
   },
@@ -26,7 +27,9 @@ const nextConfig = {
     return [
       {
         source: "/api/stream-direct-qa:params*",
-        destination: "http://127.0.0.1:8080/stream-direct-qa:params*", // Proxy to Backend
+        destination:
+          (process.env.BACKEND_API_URL || "http://127.0.0.1:8080") +
+          "/stream-direct-qa:params*", // Proxy to Backend
         permanent: true,
       },
     ];
