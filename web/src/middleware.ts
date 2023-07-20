@@ -1,13 +1,6 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import initializeBasicAuth from "nextjs-basic-auth";
-const users = [
-    { user: "user1", password: "toocool" },
-    { user: "admin", password: "password" },
-];
-const basicAuthCheck = initializeBasicAuth({
-    users: users,
-});
+
 // This function can be marked `async` if using `await` inside
 export async function middleware(request: NextRequest) {
     const authheader = request.headers.get("authorization");
@@ -30,12 +23,7 @@ export async function middleware(request: NextRequest) {
         let err = new Error('You are not authenticated!');
         res.headers.set('WWW-Authenticate', 'Basic');
         return res;
-    }// else {
-    //     let err = new Error('You are not authenticated!');
-    //     res.setHeader('WWW-Authenticate', 'Basic');
-    //     err.status = 401;
-    //     return next(err);
-    // }
+    }
 }
 
 // See "Matching Paths" below to learn more
